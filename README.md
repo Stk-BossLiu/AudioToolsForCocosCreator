@@ -17,7 +17,7 @@ AudioMax 是一个基于 CocosCreator 插件系统开发的音频处理工具，
 
 ## 使用教程
 
-### 1.进入插件目录，运行 npm install 命令安装插件依赖库。
+### 1.进入插件目录，运行`npm install`和`npm install @types` 命令安装插件依赖库。
 
 ### 2.在 cocos 引擎扩展面板中导入并启用本插件。
 
