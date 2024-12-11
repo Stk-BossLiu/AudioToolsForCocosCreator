@@ -1,0 +1,49 @@
+<div id="app">
+  <div id="audio-max" class="Panel">
+    <div id="audio-source-selecetor">
+      <ui-asset id="audio-source-docker" droppable="cc.AudioClip" ref="audio" @change="onAudioSourceChange($event.target.value)">
+      </ui-asset>
+      <el-button type="primary" size="small" id="btn-submit" v-on:click="onAudioSourceSubmit">{{submitText}}</ui-button>
+    </div>
+
+    <div id="audio-source-editor">
+      <div id="preview" class="radius" style="border-radius: var(--el-border-radius-base);">
+        <div id="waveform" ref="waveform"></div>
+        <el-divider border-style="dashed"></el-divider>
+        <div id="operator">
+          <el-button type="primary" :disabled="audioDisabled" size="small" v-on:click="playAudio()">
+            Play/Pause
+          </el-button>
+          <el-slider v-model="zoomRatio" :disabled="audioDisabled" :min="0" :max="1000" :step="10" size="small" @input="onChangeRatio(zoomRatio)"></el-slider>
+        </div>
+      </div>
+    </div>
+
+    <div id="audio-resolve">
+      <el-checkbox label="压缩" v-model="isCompress">
+      </el-checkbox>
+      <el-select v-model="compressRatio" placeholder="select" v-if="isCompress" size="small" style="width: 130px;">
+        <el-option v-for="item in compressRatioList" :key="item.value" :label="item.label" :value="item.value"></el-option>
+      </el-select>
+      <el-checkbox label="格式转换" v-model="isFormat"></el-checkbox>
+      <el-select v-model="format" placeholder="select" v-if="isFormat" size="small" style="width: 75px;">
+        <el-option v-for="item in formatList" :key="item.value" :label="item.label" :value="item.value">
+        </el-option>
+      </el-select>
+      <el-checkbox label="音量调整" v-model="isModifyVolume"></el-checkbox>
+      <el-input-number v-if="isModifyVolume" v-model="volumeRatio" :precision="1" :min="0.1" :step="0.1" :max="10" size="small" controls-position="right"></el-input-number>
+    </div>
+    <div id="audio-output">
+      <el-button type="primary" v-on:click="onAudioOutput" :disabled="audioDisabled" size="small">{{outputText}}</el-button>
+    </div>
+    <div id="audio-output-preview" v-if="isOutput">
+      <audio controls :src="outputAudioUrl"></audio>
+      <div id="buttons">
+        <el-button type="success" v-on:click="onApplyOutputAudio" size="small">{{applyText}}</el-button>
+        <el-button type="danger" v-on:click="onRemoveOutputAudio" size="small">{{removeText}}</el-button>
+      </div>
+    </div>
+  </div>
+
+
+</div>

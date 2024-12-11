@@ -1,0 +1,143 @@
+#audio-max {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+#text {
+	color: var(--color-normal-contrast-weakest);
+	margin: auto;
+	width: 180px;
+}
+
+#audio-source-editor {
+	flex: 0 0 auto;
+	align-self: stretch;
+	height: 220px;
+	position: relative;
+}
+
+#audio-resolve {
+	margin-bottom: 15px;
+}
+
+#audio-output {
+	margin-bottom: 15px;
+}
+
+#audio-output-preview {
+	margin-bottom: 15px;
+}
+
+#buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-top: 15px;
+}
+
+#audio-source-selecetor {
+	margin-top: 15px;
+	width: 60%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+#audio-source-selecetor > * {
+	margin: 0 5px;
+}
+
+#audio-source-docker {
+	width: 50%;
+}
+
+.radius {
+	position: absolute;
+	height: auto;
+	width: 90%;
+	border: 1px solid var(--el-border-color);
+	margin-top: 10px;
+	border-radius: 0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#waveform {
+	margin-top: 25px;
+}
+
+#waveform ::part(wrapper) {
+	--box-size: 10px;
+	background-image: linear-gradient(
+			transparent calc(var(--box-size) - 1px),
+			white var(--box-size),
+			transparent var(--box-size)
+		),
+		linear-gradient(
+			90deg,
+			transparent calc(var(--box-size) - 1px),
+			white var(--box-size),
+			transparent var(--box-size)
+		);
+	background-size: 100% var(--box-size), var(--box-size) 100%;
+}
+
+#waveform ::part(cursor) {
+	height: 100px;
+	top: 28px;
+	border-radius: 4px;
+	border: 1px solid #fff;
+}
+
+#waveform ::part(cursor):after {
+	content: "📀";
+	font-size: 1.5em;
+	position: absolute;
+	left: 0;
+	top: -28px;
+	transform: translateX(-50%);
+}
+
+#waveform ::part(region) {
+	background-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+#waveform ::part(region-green) {
+	background-color: rgba(0, 100, 0, 0.25) !important;
+	font-size: 12px;
+	text-shadow: 0 0 2px #fff;
+}
+
+#waveform ::part(marker) {
+	background-color: rgba(0, 0, 100, 0.25) !important;
+	border: 1px solid #fff;
+	padding: 1px;
+	text-indent: 10px;
+	font-family: fantasy;
+	text-decoration: underline;
+}
+
+#waveform ::part(region-handle-left) {
+	border-left-width: 4px !important;
+	border-left-color: #fff000 !important;
+}
+
+#waveform ::part(region-handle-right) {
+	border-right-width: 4px !important;
+	border-right-color: #fff000 !important;
+}
+
+#operator {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+#operator .el-slider {
+	width: 80%;
+	margin-left: 12px;
+}
